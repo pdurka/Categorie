@@ -15,7 +15,7 @@ Readme: opis krok po kroku jak uruchomić aplikację lokalnie, migracje itd.
 ## Install with Composer
 
 ```
-    $ curl -s http://getcomposer.org/installer | php
+    $ curl -s https://github.com/pdurka/Categorie | php
     $ php composer.phar install or composer install
 ```
 
@@ -29,6 +29,19 @@ Readme: opis krok po kroku jak uruchomić aplikację lokalnie, migracje itd.
 
 ```
    $ php artisan key:generate
+```
+
+## Database
+
+Make a database created for this app and add its credentials to the .env file located in the root of the project.
+
+```
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=homestead
+    DB_USERNAME=homestead
+    DB_PASSWORD=secret
 ```
 
 ## Run migrations
@@ -48,4 +61,10 @@ Readme: opis krok po kroku jak uruchomić aplikację lokalnie, migracje itd.
 ```
     $ curl -H 'content-type: application/json' -H 'Accept: application/json' -v -X GET http://127.0.0.1:8000/api/categorie/PL
     $ curl -H 'content-type: application/json' -H 'Accept: application/json' -v -X POST -d '[{"country":"PL","name":"Piwa"},{"country":"EN","name":"beer"}]' http://127.0.0.1:8000/api/categorie
+```
+
+## Run test
+
+```
+   $ php artisan test
 ```
