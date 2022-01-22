@@ -12,10 +12,17 @@ Napisanie listenera, który w momencie dodania nowej kategorii wyślę notyfikac
 Test: przykładowy test sprawdzający poprawność działania powyższych endpointów.
 Readme: opis krok po kroku jak uruchomić aplikację lokalnie, migracje itd.
 
+## Clone Repository
+
+```
+    $ git clone https://github.com/pdurka/Categorie.git
+    $ cd categorie
+```
+
 ## Install with Composer
 
 ```
-    $ curl -s https://github.com/pdurka/Categorie | php
+    $ curl -s http://getcomposer.org/installer | php
     $ php composer.phar install or composer install
 ```
 
@@ -56,6 +63,18 @@ Make a database created for this app and add its credentials to the .env file lo
    $ php artisan db:seed --class=CategoriesSeeder
 ```
 
+## Run test
+
+```
+   $ php artisan test
+```
+
+## Run server
+
+```
+   $ php artisan serve
+```
+
 ## Getting with Curl
 
 ```
@@ -63,8 +82,4 @@ Make a database created for this app and add its credentials to the .env file lo
     $ curl -H 'content-type: application/json' -H 'Accept: application/json' -v -X POST -d '[{"country":"PL","name":"Piwa"},{"country":"EN","name":"beer"}]' http://127.0.0.1:8000/api/categorie
 ```
 
-## Run test
 
-```
-   $ php artisan test
-```
