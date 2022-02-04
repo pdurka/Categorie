@@ -10,13 +10,39 @@ class CategorieController extends Controller
 {
     public function show($country)
     {
-        return CategoryTranslations::where('country', $country)->get();
+        $category = CategoryTranslations::where('country', $country)->get();
+                if (!$category) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Category not found '
+            ], 400);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => $category->toArray()
+        ], 200);
     }
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'country' => 'required|',
+            'name' => 'required|',
+        ]);
+
         $categorie = Categories::create()->translations()->createMany($request->all());
 
-        return response()->json($categorie, 201);
+        if ($categorie) {
+            return response()->json([
+                'success' => true,
+                'data' => $categorie->toArray()
+            ], 201);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Category not added'
+            ], 500);
+        }
     }
 }
